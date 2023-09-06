@@ -14,7 +14,7 @@ export type TodoType = {
 };
 
 export default function TodoList() {
-  const [todos, setTodos] = useState<TodoType[]>(loadTodos());
+  const [todos, setTodos] = useState<TodoType[]>([]);
   const [title, setTitle] = useState('');
   const [showAddBtn, setShowAddBtn] = useState(true);
   const todoInputRef = useRef(null);
@@ -38,6 +38,9 @@ export default function TodoList() {
   };
 
   useEffect(() => {
+    const loadedTodos = loadTodos();
+    setTodos(loadedTodos);
+
     if (!todoInputRef.current) return;
 
     const callback = (entries: IntersectionObserverEntry[]) => {
