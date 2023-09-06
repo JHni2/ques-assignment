@@ -1,10 +1,10 @@
 'use client';
-import { weatherDescKo } from '@/app/const/weatherDescKo';
-import { week } from '@/app/const/week';
+import { weatherDescKo } from '@/const/weatherDescKo';
+import { week } from '@/const/week';
 import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import MapIcon from './ui/MapIcon';
+import MapIcon from './ui/icons/MapIcon';
 
 type WeatherProps = {
   lat: number;
@@ -52,9 +52,9 @@ export default function Weather() {
   };
 
   return (
-    <section className="weather">
+    <section className="weather mb-12">
       <div className="flex flex-col items-center mb-4">
-        <span className="text-sm text-blue-900">Weather</span>
+        <span className="text-sm font-semibold text-blue-900">Weather</span>
         <span className="text-lg font-bold">오늘 날씨</span>
       </div>
       <div className="flex justify-center">
