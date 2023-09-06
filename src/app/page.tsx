@@ -1,3 +1,9 @@
+import Weather from '@/components/Weather';
+
 export default function Home() {
-  return <section></section>;
+  return (
+    <div className="w-full max-w-[1024px] p-4 mx-auto">
+      <Weather />
+    </div>
+  );
 }
