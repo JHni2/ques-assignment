@@ -5,5 +5,5 @@ type Props = {
 };
 
 export default function CheckBoxCheckedIcon({ size = 28 }: Props) {
-  return <IoMdCheckbox size={size} className="text-blue-900 shrink-0 mb-auto" />;
+  return <IoMdCheckbox size={size} className="text-blue-900 shrink-0 mb-auto cursor-pointer" />;
 }

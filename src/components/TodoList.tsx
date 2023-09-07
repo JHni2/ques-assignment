@@ -1,4 +1,5 @@
 'use client';
+import { useSSR } from '@/hooks/useSSR';
 import { loadTodos, saveTodos } from '@/store/todoStorage';
 import { useEffect, useRef, useState } from 'react';
 import TodoInput from './TodoInput';
@@ -7,26 +8,26 @@ import ScrollToInput from './ui/icons/ScrollToInput';
 
 export type TodoType = {
   id: number;
-  title: string;
+  task: string;
   checked: boolean;
   date: string | undefined;
   memo: string | undefined;
 };
 
 export default function TodoList() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
-  const [title, setTitle] = useState('');
+  const [todos, setTodos] = useSSR();
+  const [task, setTask] = useState('');
   const [showAddBtn, setShowAddBtn] = useState(true);
   const todoInputRef = useRef(null);
 
-  const handleTitleChange = (text: string) => {
-    setTitle(text);
+  const handleTaskChange = (text: string) => {
+    setTask(text);
   };
 
-  const handleSubmit = () => {
+  const addTask = () => {
     const newTodos = todos.concat({
       id: Date.now(),
-      title: title,
+      task: task,
       checked: false,
       date: '',
       memo: '',
@@ -34,7 +35,7 @@ export default function TodoList() {
 
     saveTodos(newTodos);
     setTodos(newTodos);
-    setTitle('');
+    setTask('');
   };
 
   useEffect(() => {
@@ -73,7 +74,7 @@ export default function TodoList() {
           <TodoListBox todos={todos} />
         </div>
         <div ref={todoInputRef}>
-          <TodoInput title={title} onTitleChange={handleTitleChange} onSubmit={handleSubmit} />
+          <TodoInput task={task} onTaskChange={handleTaskChange} onSubmit={addTask} />
         </div>
       </div>
       {showAddBtn && <ScrollToInput />}
