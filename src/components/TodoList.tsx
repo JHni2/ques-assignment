@@ -1,5 +1,4 @@
 'use client';
-import { loadTodos, saveTodos } from '@/store/todoStorage';
 import { useEffect, useRef, useState } from 'react';
 import TodoInput from './TodoInput';
 import TodoListBox from './TodoListBox';
@@ -7,40 +6,17 @@ import ScrollToInput from './ui/icons/ScrollToInput';
 
 export type TodoType = {
   id: number;
-  title: string;
+  task: string;
   checked: boolean;
   date: string | undefined;
   memo: string | undefined;
 };
 
 export default function TodoList() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
-  const [title, setTitle] = useState('');
   const [showAddBtn, setShowAddBtn] = useState(true);
   const todoInputRef = useRef(null);
 
-  const handleTitleChange = (text: string) => {
-    setTitle(text);
-  };
-
-  const handleSubmit = () => {
-    const newTodos = todos.concat({
-      id: Date.now(),
-      title: title,
-      checked: false,
-      date: '',
-      memo: '',
-    });
-
-    saveTodos(newTodos);
-    setTodos(newTodos);
-    setTitle('');
-  };
-
   useEffect(() => {
-    const loadedTodos = loadTodos();
-    setTodos(loadedTodos);
-
     if (!todoInputRef.current) return;
 
     const callback = (entries: IntersectionObserverEntry[]) => {
@@ -70,10 +46,10 @@ export default function TodoList() {
       </div>
       <div className="flex flex-col justify-center">
         <div className="px-8 py-4 rounded-3xl shadow-md mb-4">
-          <TodoListBox todos={todos} />
+          <TodoListBox />
         </div>
         <div ref={todoInputRef}>
-          <TodoInput title={title} onTitleChange={handleTitleChange} onSubmit={handleSubmit} />
+          <TodoInput />
         </div>
       </div>
       {showAddBtn && <ScrollToInput />}
