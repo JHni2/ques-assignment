@@ -1,14 +1,20 @@
+import { useSSR } from '@/hooks/useSSR';
+import { loadTodos } from '@/store/todoStorage';
+import { useEffect } from 'react';
 import TodoItem from './TodoItem';
 import { TodoType } from './TodoList';
 
-type Props = {
-  todos: TodoType[];
-};
+export default function TodoListBox() {
+  const [todos, setTodos] = useSSR();
 
-export default function TodoListBox({ todos }: Props) {
+  useEffect(() => {
+    const loadedTodos = loadTodos();
+    setTodos(loadedTodos);
+  }, []);
+
   return (
     <ul>
-      {todos.map((todo) => {
+      {todos.map((todo: TodoType) => {
         return <TodoItem id={todo.id} key={todo.id} task={todo.task} checked={todo.checked} date={todo.date} memo={todo.memo} />;
       })}
     </ul>

@@ -1,6 +1,4 @@
 'use client';
-import { useSSR } from '@/hooks/useSSR';
-import { loadTodos, saveTodos } from '@/store/todoStorage';
 import { useEffect, useRef, useState } from 'react';
 import TodoInput from './TodoInput';
 import TodoListBox from './TodoListBox';
@@ -15,33 +13,10 @@ export type TodoType = {
 };
 
 export default function TodoList() {
-  const [todos, setTodos] = useSSR();
-  const [task, setTask] = useState('');
   const [showAddBtn, setShowAddBtn] = useState(true);
   const todoInputRef = useRef(null);
 
-  const handleTaskChange = (text: string) => {
-    setTask(text);
-  };
-
-  const addTask = () => {
-    const newTodos = todos.concat({
-      id: Date.now(),
-      task: task,
-      checked: false,
-      date: '',
-      memo: '',
-    });
-
-    saveTodos(newTodos);
-    setTodos(newTodos);
-    setTask('');
-  };
-
   useEffect(() => {
-    const loadedTodos = loadTodos();
-    setTodos(loadedTodos);
-
     if (!todoInputRef.current) return;
 
     const callback = (entries: IntersectionObserverEntry[]) => {
@@ -71,10 +46,10 @@ export default function TodoList() {
       </div>
       <div className="flex flex-col justify-center">
         <div className="px-8 py-4 rounded-3xl shadow-md mb-4">
-          <TodoListBox todos={todos} />
+          <TodoListBox />
         </div>
         <div ref={todoInputRef}>
-          <TodoInput task={task} onTaskChange={handleTaskChange} onSubmit={addTask} />
+          <TodoInput />
         </div>
       </div>
       {showAddBtn && <ScrollToInput />}
