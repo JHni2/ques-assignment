@@ -26,8 +26,8 @@ export default function AlertDetail({ onClose }: Props) {
 
   return (
     <div className="flex flex-col px-4 py-5">
-      <span className="text-lg font-bold mb-2">작업 삭제</span>
-      <span>작업이 영구적으로 삭제됩니다.</span>
+      <span className="text-lg font-bold mb-2">할 일 삭제</span>
+      <span>할 일이 영구적으로 삭제됩니다.</span>
       <div className="flex justify-center gap-4 mt-5 text-white font-bold">
         <p onClick={() => handleDelteTodo(id)} className="w-full text-center bg-blue-900 px-2 py-2 rounded-lg cursor-pointer">
           삭제
