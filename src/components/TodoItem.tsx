@@ -1,6 +1,7 @@
 'use client';
 import { useSSR } from '@/hooks/useSSR';
 import { saveTodos } from '@/store/todoStorage';
+import Link from 'next/link';
 import { TodoType } from './TodoList';
 import CheckBoxCheckedIcon from './ui/icons/CheckBoxIcon';
 import UncheckedBoxIcon from './ui/icons/UncheckedBoxIcon';
@@ -26,7 +27,9 @@ export default function TodoItem({ id, task, checked, date, memo }: TodoType) {
   return (
     <li className="flex items-center gap-4 mb-4">
       <div onClick={() => toggleTodoList(id)}>{checked ? <CheckBoxCheckedIcon /> : <UncheckedBoxIcon />}</div>
-      <span className="text-lg">{task}</span>
+      <span className="text-lg">
+        <Link href={`/todoDetail/${id}`}>{task}</Link>
+      </span>
     </li>
   );
 }
