@@ -11,7 +11,7 @@ type Props = {
 
 export default function DetailTodo({ id }: Props) {
   const [todos, setTodos] = useSSR();
-  const currentTodo = todos.find((item: TodoType) => item.id === Number(id));
+  const currentTodo = todos.find((todo: TodoType) => todo.id === Number(id));
 
   const toggleTodoList = (id: number) => {
     const newTodos = todos.map((todo: TodoType) => {
