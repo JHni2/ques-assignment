@@ -1,10 +1,10 @@
-import { useSSR } from '@/hooks/useSSR';
+import { useTodos } from '@/hooks/useSSR';
 import { saveTodos } from '@/store/todoStorage';
 import { ChangeEvent, useEffect, useState } from 'react';
 import CalendarIcon from './ui/icons/CalendarIcon';
 
 export default function TodoInput() {
-  const [todos, setTodos] = useSSR();
+  const [todos, setTodos] = useTodos();
   const [task, setTask] = useState('');
 
   const handleTaskChange = (text: string) => {
@@ -19,12 +19,15 @@ export default function TodoInput() {
     event.preventDefault();
 
     if (task === '') return;
+    const tday = new Date().toString();
+
     const newTodos = todos.concat({
       id: Date.now(),
       task: task,
       checked: false,
       date: '',
       memo: '',
+      createdAt: new Date(tday.replaceAll('-', '/')),
     });
 
     saveTodos(newTodos);

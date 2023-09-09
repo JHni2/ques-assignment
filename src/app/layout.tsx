@@ -17,7 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="kr">
       <Recoil>
-        <body className={notoSansKr.className}>{children}</body>
+        <body className={notoSansKr.className}>
+          {children}
+          <div id="portal" />
+        </body>
       </Recoil>
     </html>
   );

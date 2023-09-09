@@ -5,5 +5,5 @@ type Props = {
 };
 
 export default function CalendarIcon({ size = 24 }: Props) {
-  return <MdEditCalendar size={size} className="text-blue-900 shrink-0 mb-auto opacity-40 cursor-pointer" />;
+  return <MdEditCalendar size={size} className="text-blue-900/40 shrink-0 mb-auto cursor-pointer" />;
 }

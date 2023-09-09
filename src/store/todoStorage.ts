@@ -13,3 +13,17 @@ export const loadTodos = () => {
     return JSON.parse(todos);
   }
 };
+
+export const saveCurrentTodo = (todo: TodoType) => {
+  localStorage.setItem('currentTodo', JSON.stringify(todo));
+};
+
+export const loadCurrentTodo = () => {
+  const currentTodo = localStorage.getItem('currentTodo');
+
+  if (!currentTodo) {
+    return [];
+  } else {
+    return JSON.parse(currentTodo);
+  }
+};

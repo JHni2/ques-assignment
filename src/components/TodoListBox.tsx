@@ -1,11 +1,11 @@
-import { useSSR } from '@/hooks/useSSR';
+import { useTodos } from '@/hooks/useSSR';
 import { loadTodos } from '@/store/todoStorage';
 import { useEffect } from 'react';
 import TodoItem from './TodoItem';
 import { TodoType } from './TodoList';
 
 export default function TodoListBox() {
-  const [todos, setTodos] = useSSR();
+  const [todos, setTodos] = useTodos();
 
   useEffect(() => {
     const loadedTodos = loadTodos();
@@ -15,7 +15,7 @@ export default function TodoListBox() {
   return (
     <ul>
       {todos.map((todo: TodoType) => {
-        return <TodoItem id={todo.id} key={todo.id} task={todo.task} checked={todo.checked} date={todo.date} memo={todo.memo} />;
+        return <TodoItem id={todo.id} key={todo.id} task={todo.task} checked={todo.checked} date={todo.date} memo={todo.memo} createdAt={todo.createdAt} />;
       })}
     </ul>
   );
