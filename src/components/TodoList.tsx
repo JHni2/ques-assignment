@@ -1,4 +1,6 @@
 'use client';
+import { useCurrentTodo } from '@/hooks/useSSR';
+import { loadCurrentTodo } from '@/store/todoStorage';
 import { useEffect, useRef, useState } from 'react';
 import TodoInput from './TodoInput';
 import TodoListBox from './TodoListBox';
@@ -16,6 +18,12 @@ export type TodoType = {
 export default function TodoList() {
   const [showAddBtn, setShowAddBtn] = useState(true);
   const todoInputRef = useRef(null);
+  const [currentTodo, setCurrentTodo] = useCurrentTodo();
+
+  useEffect(() => {
+    loadCurrentTodo();
+    localStorage.removeItem('currentTodo');
+  }, []);
 
   useEffect(() => {
     if (!todoInputRef.current) return;

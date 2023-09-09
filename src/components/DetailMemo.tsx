@@ -1,20 +1,24 @@
 'use client';
 import { useCurrentTodo, useTodos } from '@/hooks/useSSR';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useDebounce from '@/hooks/debounce';
 import { TodoType } from './TodoList';
 import { saveTodos } from '@/store/todoStorage';
 import { convertTime } from '@/utils/convertTime';
 import TextareaAutosize from 'react-textarea-autosize';
+import { usePathname } from 'next/navigation';
 
 export default function DetailMemo() {
   const [currentTodo, setCurrentTodo] = useCurrentTodo();
   const [todos, setTodos] = useTodos();
   const [memo, setMemo] = useState('');
   const debouncedMemo = useDebounce(memo);
+  const id = Number(usePathname().slice(12));
 
   useEffect(() => {
-    currentTodo.memo && setMemo(currentTodo.memo);
+    if (id === currentTodo.id) {
+      currentTodo.memo && setMemo(currentTodo.memo);
+    }
   }, [currentTodo.memo]);
 
   useEffect(() => {
