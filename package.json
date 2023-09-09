@@ -29,6 +29,7 @@
     "@types/lodash": "^4.14.198",
     "lodash": "^4.17.21",
     "react-icons": "^4.10.1",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.15.0",
+    "react-textarea-autosize": "^8.5.3"
   }
 }

@@ -10,6 +10,7 @@ export type TodoType = {
   checked: boolean;
   date: string | undefined;
   memo: string | undefined;
+  createdAt: Date;
 };
 
 export default function TodoList() {

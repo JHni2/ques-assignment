@@ -19,12 +19,15 @@ export default function TodoInput() {
     event.preventDefault();
 
     if (task === '') return;
+    const tday = new Date().toString();
+
     const newTodos = todos.concat({
       id: Date.now(),
       task: task,
       checked: false,
       date: '',
       memo: '',
+      createdAt: new Date(tday.replaceAll('-', '/')),
     });
 
     saveTodos(newTodos);

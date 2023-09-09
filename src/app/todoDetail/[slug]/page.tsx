@@ -16,7 +16,7 @@ type Props = {
 export default function TodoDetailPage({ params: { slug } }: Props) {
   const [todos, setTodos] = useTodos();
   const [currentTodo, setCurrentTodo] = useCurrentTodo();
-  const newCurrentTodo = todos.find((todo) => todo.id === Number(slug));
+  const newCurrentTodo = todos.find((todo: TodoType) => todo.id === Number(slug));
 
   useEffect(() => {
     if (newCurrentTodo) {

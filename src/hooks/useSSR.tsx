@@ -4,7 +4,7 @@ import { currentTodoState, todoListState } from '@/store/atoms';
 import { useEffect, useState } from 'react';
 import { TodoType } from '@/components/TodoList';
 
-const defaultValue = { id: 1, task: '', checked: false, date: '', memo: '' };
+const defaultValue = { id: 1, task: '', checked: false, date: '', memo: '', createdAt: new Date() };
 
 export function useTodos() {
   const [isInitial, setIsInitial] = useState(true);
