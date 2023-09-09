@@ -1,5 +1,5 @@
 'use client';
-import { useSSR } from '@/hooks/useSSR';
+import { useTodos } from '@/hooks/useSSR';
 import { saveTodos } from '@/store/todoStorage';
 import { usePathname, useRouter } from 'next/navigation';
 import { TodoType } from './TodoList';
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function AlertDetail({ onClose }: Props) {
-  const [todos, setTodos] = useSSR();
+  const [todos, setTodos] = useTodos();
   const id = Number(usePathname().slice(12));
   const router = useRouter();
 

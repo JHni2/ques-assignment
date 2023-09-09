@@ -16,7 +16,7 @@ export default function DetailHeader() {
 
   return (
     <header className="fixed w-full h-[60px] z-50">
-      <div className="flex justify-between items-center max-w-[1024px] px-3 py-5">
+      <div className="flex justify-between items-center max-w-[1024px] mx-auto px-3 py-5">
         <Link href="/">
           <BackIcon />
         </Link>

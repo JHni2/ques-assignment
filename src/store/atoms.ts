@@ -14,3 +14,9 @@ export const todoListState = atom({
   default: [] as TodoType[],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const currentTodoState = atom({
+  key: 'currentTodo',
+  default: {} as TodoType,
+  effects_UNSTABLE: [persistAtom],
+});
