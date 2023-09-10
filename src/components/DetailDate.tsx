@@ -13,7 +13,7 @@ export default function DetailDate() {
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    if (currentTodo.date === null) {
+    if (currentTodo.date === null || currentTodo.date === undefined) {
       setTodoDate(null);
     } else {
       {
@@ -26,7 +26,7 @@ export default function DetailDate() {
         setTodoDate(`${year}년 ${month}월 ${date}일 ${week[day]}`);
       }
     }
-  }, [currentTodo.date]);
+  }, [currentTodo, currentTodo.date]);
 
   return (
     <div className="flex flex-col gap-1 px-8 py-4">

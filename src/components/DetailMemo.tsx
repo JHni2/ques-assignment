@@ -1,7 +1,7 @@
 'use client';
 import { useCurrentTodo, useTodos } from '@/hooks/useSSR';
 import { useEffect, useState } from 'react';
-import useDebounce from '@/hooks/debounce';
+import useDebounce from '@/hooks/useDebounce';
 import { TodoType } from './TodoList';
 import { saveTodos } from '@/store/todoStorage';
 import { convertTime } from '@/utils/convertTime';
