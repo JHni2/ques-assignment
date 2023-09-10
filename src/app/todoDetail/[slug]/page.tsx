@@ -1,6 +1,6 @@
 'use client';
 import DetailContent from '@/components/DetailContent';
-import DetailPhoto from '@/components/DetailPhoto';
+import DetailImage from '@/components/DetailImage';
 import DetailTodo from '@/components/DetailTodo';
 import { TodoType } from '@/components/TodoList';
 import { useCurrentTodo, useTodos } from '@/hooks/useSSR';
@@ -32,7 +32,7 @@ export default function TodoDetailPage({ params: { slug } }: Props) {
       <main className="w-full max-w-[1024px] mx-auto px-8 py-4 flex flex-col gap-6 relative top-[100px]">
         <DetailTodo />
         <DetailContent />
-        <DetailPhoto />
+        <DetailImage />
       </main>
     </div>
   );

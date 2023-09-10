@@ -4,7 +4,7 @@ import XIcon from './ui/icons/XIcon';
 
 export const defualtImage = '/images/default-image.png';
 
-export default function DetailPhoto() {
+export default function DetailImage() {
   const [imgSrc, setImgSrc] = useState<string>(defualtImage);
 
   return (

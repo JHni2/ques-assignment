@@ -3,7 +3,7 @@ import { saveTodos } from '@/store/todoStorage';
 import { ChangeEvent, useEffect, useState } from 'react';
 import CalendarDetail, { Value } from './CalendarDetail';
 import CalendarModal from './CalendarModal';
-import { defualtImage } from './DetailPhoto';
+import { defualtImage } from './DetailImage';
 import CalendarIcon from './ui/icons/CalendarIcon';
 import ModalPortal from './ui/icons/ModalPortal';
 
