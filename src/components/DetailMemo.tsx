@@ -1,7 +1,7 @@
 'use client';
 import { useCurrentTodo, useTodos } from '@/hooks/useSSR';
 import { useEffect, useState } from 'react';
-import useDebounce from '@/hooks/debounce';
+import useDebounce from '@/hooks/useDebounce';
 import { TodoType } from './TodoList';
 import { saveTodos } from '@/store/todoStorage';
 import { convertTime } from '@/utils/convertTime';
@@ -43,7 +43,7 @@ export default function DetailMemo() {
       <p className="text-lg font-bold">메모</p>
       {currentTodo && (
         <>
-          <TextareaAutosize placeholder="메모 설정" value={memo} onChange={(e) => setMemo(e.target.value)}></TextareaAutosize>
+          <TextareaAutosize className="outline-none" placeholder="메모 설정" value={memo} onChange={(e) => setMemo(e.target.value)}></TextareaAutosize>
           <p className="pt-8 text-end text-sm text-blue-900/60">{convertTime(currentTodo?.createdAt)} 생성함</p>
         </>
       )}

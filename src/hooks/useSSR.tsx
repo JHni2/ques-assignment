@@ -3,8 +3,9 @@ import { useRecoilState } from 'recoil';
 import { currentTodoState, todoListState } from '@/store/atoms';
 import { useEffect, useState } from 'react';
 import { TodoType } from '@/components/TodoList';
+import { defualtImage } from '@/components/DetailPhoto';
 
-const defaultValue = { id: 1, task: '', checked: false, date: '', memo: '', createdAt: new Date() };
+const defaultValue = { id: 1, task: '', checked: false, date: null, memo: '', img: defualtImage, createdAt: new Date() };
 
 export function useTodos() {
   const [isInitial, setIsInitial] = useState(true);

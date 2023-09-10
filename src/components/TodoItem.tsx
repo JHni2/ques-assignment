@@ -6,7 +6,13 @@ import { TodoType } from './TodoList';
 import CheckBoxCheckedIcon from './ui/icons/CheckBoxIcon';
 import UncheckedBoxIcon from './ui/icons/UncheckedBoxIcon';
 
-export default function TodoItem({ id, task, checked, date, memo, createdAt }: TodoType) {
+type Props = {
+  id: number;
+  task: string;
+  checked: boolean;
+};
+
+export default function TodoItem({ id, task, checked }: Props) {
   const [todos, setTodos] = useTodos();
 
   const toggleTodoList = (id: number) => {

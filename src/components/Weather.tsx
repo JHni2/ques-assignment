@@ -4,6 +4,7 @@ import { week } from '@/const/week';
 import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Title from './Title';
 import MapIcon from './ui/icons/MapIcon';
 
 type WeatherProps = {
@@ -53,12 +54,9 @@ export default function Weather() {
 
   return (
     <section className="weather mb-12">
-      <div className="flex flex-col items-center mb-4">
-        <span className="text-sm font-semibold text-blue-900">Weather</span>
-        <span className="text-lg font-bold">오늘 날씨</span>
-      </div>
+      <Title en="Weather" kr="오늘 날씨" />
       <div className="flex justify-center">
-        <div className="flex flex-col items-center px-16 py-4 rounded-3xl shadow-md">
+        <div className="w-full flex flex-col items-center px-16 py-4 rounded-3xl shadow-md">
           <span>{formattedDate}</span>
           {loading ? (
             <div className="min-h-[175px] min-w-[165px]"></div>
