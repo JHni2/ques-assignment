@@ -58,7 +58,6 @@ export default function TodoList() {
         <Title en="Todo List" kr="할 일 목록" />
         <div onClick={() => setShowSortModal(true)}>
           <DotsIcon className="absolute top-[20px] right-[calc(50%-4.5rem)]" />
-          {/* {showSortModal && <SortDetail onClose={() => setShowSortModal(false)} />} */}
         </div>
         {showSortModal && (
           <ModalPortal>
