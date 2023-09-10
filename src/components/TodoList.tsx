@@ -55,7 +55,7 @@ export default function TodoList() {
         <span className="text-lg font-bold">할 일 목록</span>
       </div>
       <div className="flex flex-col justify-center">
-        <div className="px-8 py-4 rounded-3xl shadow-md mb-4">
+        <div className="px-8 py-4 rounded-3xl shadow-md mb-6">
           <TodoListBox />
         </div>
         <div ref={todoInputRef}>
