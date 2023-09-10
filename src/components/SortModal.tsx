@@ -6,7 +6,7 @@ type Props = {
 export default function SortModal({ onClose, children }: Props) {
   return (
     <section
-      className="absolute top-0 left-0 flex flex-col justify-center items-center w-full h-[110%] z-50"
+      className="absolute top-0 left-0 flex flex-col justify-center items-center w-full h-screen z-50"
       onClick={(event) => {
         if (event?.target === event?.currentTarget) {
           onClose();
