@@ -57,7 +57,10 @@ export default function Weather() {
       <Title en="Weather" kr="오늘 날씨" />
       <div className="flex justify-center">
         <div className="w-full flex flex-col items-center px-16 py-4 rounded-3xl shadow-md">
-          <span>{formattedDate}</span>
+          <time dateTime={formattedDate} suppressHydrationWarning>
+            {formattedDate}
+          </time>
+          {/* <span>{formattedDate}</span> */}
           {loading ? (
             <div className="min-h-[175px] min-w-[165px]"></div>
           ) : (
