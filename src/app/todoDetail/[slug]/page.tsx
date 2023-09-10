@@ -26,12 +26,12 @@ export default function TodoDetailPage({ params: { slug } }: Props) {
   }, [newCurrentTodo]);
 
   return (
-    <section>
+    <div>
       <DetailHeader />
       <main className="w-full max-w-[1024px] mx-auto px-8 py-4 flex flex-col gap-6 relative top-[110px]">
         <DetailTodo />
         <DetailContent />
       </main>
-    </section>
+    </div>
   );
 }

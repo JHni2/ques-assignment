@@ -2,6 +2,7 @@
 import { useCurrentTodo } from '@/hooks/useSSR';
 import { loadCurrentTodo } from '@/store/todoStorage';
 import { useEffect, useRef, useState } from 'react';
+import { Value } from './CalendarDetail';
 import TodoInput from './TodoInput';
 import TodoListBox from './TodoListBox';
 import ScrollToInput from './ui/icons/ScrollToInput';
@@ -10,7 +11,7 @@ export type TodoType = {
   id: number;
   task: string;
   checked: boolean;
-  date: string | undefined;
+  date: Value;
   memo: string | undefined;
   createdAt: Date;
 };
