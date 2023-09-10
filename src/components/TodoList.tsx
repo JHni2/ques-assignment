@@ -1,10 +1,14 @@
 'use client';
-import { useCurrentTodo } from '@/hooks/useSSR';
 import { loadCurrentTodo } from '@/store/todoStorage';
 import { useEffect, useRef, useState } from 'react';
 import { Value } from './CalendarDetail';
+import SortDetail from './SortDetail';
+import SortModal from './SortModal';
+import Title from './Title';
 import TodoInput from './TodoInput';
 import TodoListBox from './TodoListBox';
+import DotsIcon from './ui/icons/DotsIcon';
+import ModalPortal from './ui/icons/ModalPortal';
 import ScrollToInput from './ui/icons/ScrollToInput';
 
 export type TodoType = {
@@ -18,8 +22,8 @@ export type TodoType = {
 
 export default function TodoList() {
   const [showAddBtn, setShowAddBtn] = useState(true);
+  const [showSortModal, setShowSortModal] = useState(false);
   const todoInputRef = useRef(null);
-  const [currentTodo, setCurrentTodo] = useCurrentTodo();
 
   useEffect(() => {
     loadCurrentTodo();
@@ -50,9 +54,19 @@ export default function TodoList() {
 
   return (
     <section className="todo-list">
-      <div className="flex flex-col items-center mb-4">
-        <span className="text-sm font-semibold text-blue-900">Todo List</span>
-        <span className="text-lg font-bold">할 일 목록</span>
+      <div className="relative">
+        <Title en="Todo List" kr="할 일 목록" />
+        <div onClick={() => setShowSortModal(true)}>
+          <DotsIcon className="absolute top-[20px] right-[calc(50%-4.5rem)]" />
+          {/* {showSortModal && <SortDetail onClose={() => setShowSortModal(false)} />} */}
+        </div>
+        {showSortModal && (
+          <ModalPortal>
+            <SortModal onClose={() => setShowSortModal(false)}>
+              <SortDetail />
+            </SortModal>
+          </ModalPortal>
+        )}
       </div>
       <div className="flex flex-col justify-center">
         <div className="px-8 py-4 rounded-3xl shadow-md mb-6">

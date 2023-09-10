@@ -1,4 +1,3 @@
-import { sorts } from '@/const/sort';
 import { useTodos } from '@/hooks/useSSR';
 import { useEffect, useState } from 'react';
 import CheckIcon from './ui/icons/CheckIcon';
@@ -10,8 +9,7 @@ export default function SortDetail() {
 
   useEffect(() => {
     if (todos[0].id !== 1) {
-      // setTodos(sortTodos(sortField, sortOrder));
-      console.log(sortTodos(sortField, sortOrder));
+      setTodos(sortTodos(sortField, sortOrder));
     }
   }, [sortField, sortOrder]);
 
