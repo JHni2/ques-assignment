@@ -17,6 +17,7 @@ export type TodoType = {
   checked: boolean;
   date: Value;
   memo: string | undefined;
+  img: string;
   createdAt: Date;
 };
 

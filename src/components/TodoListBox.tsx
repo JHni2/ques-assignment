@@ -15,7 +15,7 @@ export default function TodoListBox() {
   return (
     <ul>
       {todos.map((todo: TodoType) => {
-        return <TodoItem id={todo.id} key={todo.id} task={todo.task} checked={todo.checked} date={todo.date} memo={todo.memo} createdAt={todo.createdAt} />;
+        return <TodoItem id={todo.id} key={todo.id} task={todo.task} checked={todo.checked} />;
       })}
     </ul>
   );

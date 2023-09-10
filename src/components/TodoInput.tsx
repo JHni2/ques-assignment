@@ -3,6 +3,7 @@ import { saveTodos } from '@/store/todoStorage';
 import { ChangeEvent, useEffect, useState } from 'react';
 import CalendarDetail, { Value } from './CalendarDetail';
 import CalendarModal from './CalendarModal';
+import { defualtImage } from './DetailPhoto';
 import CalendarIcon from './ui/icons/CalendarIcon';
 import ModalPortal from './ui/icons/ModalPortal';
 
@@ -36,6 +37,7 @@ export default function TodoInput() {
       checked: false,
       date: date,
       memo: '',
+      img: defualtImage,
       createdAt: new Date(tday.replaceAll('-', '/')),
     });
 
