@@ -36,7 +36,7 @@ export default function SortDetail() {
   };
 
   return (
-    <div className="flex flex-col items-center absolute bottom-[2rem] right-[calc(50%-12rem)] py-3 shadow-md rounded-3xl bg-white z-50">
+    <div className="flex flex-col items-center absolute top-[29rem] right-[calc(50%-12rem)] py-3 shadow-md rounded-3xl bg-white z-50">
       <span className="text-sm font-bold px-7">정렬</span>
       <div className="flex flex-col gap-2 text-sm mt-2">
         <SortOption fieldKr={'생성일'} fieldEn={'createdAt'} sortField={sortField} setSortField={setSortField} />
