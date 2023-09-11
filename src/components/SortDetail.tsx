@@ -1,17 +1,49 @@
-import { useTodos } from '@/hooks/useSSR';
+import { useStorageSort, useTodos } from '@/hooks/useSSR';
+import { saveTodos } from '@/store/todoStorage';
 import { useEffect, useState } from 'react';
 import SortOption from './SortOption';
 
 export default function SortDetail() {
   const [todos, setTodos] = useTodos();
-  const [sortField, setSortField] = useState<'createdAt' | 'title' | 'check'>('createdAt');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'des'>('asc');
+  const [storageSort, setStorageSort] = useStorageSort();
+  const [sortField, setSortField] = useState<'createdAt' | 'title' | 'check' | ''>(storageSort.field);
+  const [sortOrder, setSortOrder] = useState<'asc' | 'des' | ''>(storageSort.order);
 
   useEffect(() => {
-    if (todos[0].id !== 1) {
-      setTodos(sortTodos(sortField, sortOrder));
+    if (storageSort.field === '' && storageSort.order === '') {
+      return;
+    } else {
+      if (storageSort.field === undefined && storageSort.order === undefined) {
+        setStorageSort({ field: 'createdAt', order: 'asc' });
+      }
+    }
+  }, [storageSort]);
+
+  useEffect(() => {
+    if (todos[0]) {
+      if (todos[0].id !== 1) {
+        const newTodos = sortTodos(sortField, sortOrder);
+        setTodos(newTodos);
+        saveTodos(newTodos);
+      }
     }
   }, [sortField, sortOrder]);
+
+  useEffect(() => {
+    if (sortField === '') {
+      return;
+    } else {
+      setStorageSort({ field: sortField, order: storageSort.order });
+    }
+  }, [sortField]);
+
+  useEffect(() => {
+    if (sortOrder === '') {
+      return;
+    } else {
+      setStorageSort({ field: storageSort.field, order: sortOrder });
+    }
+  }, [sortOrder]);
 
   const sortTodos = (field: string, order: string) => {
     return [...todos].sort((a, b) => {
