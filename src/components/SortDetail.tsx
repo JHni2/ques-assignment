@@ -9,6 +9,16 @@ export default function SortDetail() {
   const [sortField, setSortField] = useState<'createdAt' | 'title' | 'check' | ''>(storageSort.field);
   const [sortOrder, setSortOrder] = useState<'asc' | 'des' | ''>(storageSort.order);
 
+  // useEffect(() => {
+  //   if (storageSort.field === '' && storageSort.order === '') {
+  //     return;
+  //   } else {
+  //     if (storageSort.field === undefined && storageSort.order === undefined) {
+  //       setStorageSort({ field: 'createdAt', order: 'asc' });
+  //     }
+  //   }
+  // }, [storageSort]);
+
   useEffect(() => {
     if (storageSort.field === '' && storageSort.order === '') {
       return;
@@ -17,17 +27,18 @@ export default function SortDetail() {
         setStorageSort({ field: 'createdAt', order: 'asc' });
       }
     }
-  }, [storageSort]);
 
-  useEffect(() => {
     if (todos[0]) {
       if (todos[0].id !== 1) {
-        const newTodos = sortTodos(sortField, sortOrder);
+        const newTodos = sortTodos(storageSort.field, sortOrder);
+        if (sortField === '' && sortOrder === '') {
+          return;
+        }
         setTodos(newTodos);
         saveTodos(newTodos);
       }
     }
-  }, [sortField, sortOrder]);
+  }, [sortField, sortOrder, storageSort]);
 
   useEffect(() => {
     if (sortField === '') {
